@@ -218,6 +218,14 @@ namespace Lucian_The_Troll
             Drawing.OnDraw += Drawing_OnDraw;
         }
 
+        Obj_AI_Base.OnBasicAttack += delegate (Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (sender.IsValidTarget(900) && Q.IsReady && sender.IsEnemy && sender.Type == GameObjectType.AIHeroClient)
+            {
+                 Harass();
+            }
+        }; 
+        
         public static
             void Drawing_OnDraw(EventArgs args)
         {
